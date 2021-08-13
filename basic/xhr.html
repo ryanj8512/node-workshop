@@ -1,6 +1,7 @@
 <html lang="en">
   <head>
     <title>XHR</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <button id="syncBtn">同步</button>
@@ -9,7 +10,17 @@
     <div id="count">0</div>
     <div id="response">準備要顯示訊息</div>
 
+    <button id="axiosBtn">AXIOS</button>
+
     <script>
+      var axiosBtn = document.getElementById("axiosBtn");
+      axiosBtn.addEventListener("click", async function () {
+        let a = "123";
+        let result = await axios.get("http://18.237.113.31:3000/");
+        a = result.data;
+        console.log(a);
+      });
+
       var response = document.getElementById("response");
       var syncBtn = document.getElementById("syncBtn");
       syncBtn.addEventListener("click", function () {
