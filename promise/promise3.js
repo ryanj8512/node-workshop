@@ -14,13 +14,15 @@ let doWork = function (job, timer, isOK) {
 let dt = new Date();
 console.log(`開始工作 at ${dt.toISOString()}`);
 
-// await 等到後面 promise 物件的狀態變成 fulfilled
+// await 等到後面 promise 物件的狀態變成 fulfilled, rejected
 async function doAllWorks() {
+  // 如果要處理錯誤，可以用 try -- catch 接錯誤
+  try {
     let result1 = await doWork("起床", 2000, true);
     console.log(result1);
     let result2 = await doWork("打開電腦", 2000, true);
     console.log(result2);
-    let result3 = await doWork("看錄影檔", 2000, true);
+    let result3 = await doWork("看錄影檔", 2000, false);
     console.log(result3);
     let result4 = await doWork("帶小孩散步", 8000, true);
     console.log(result4);
@@ -28,5 +30,8 @@ async function doAllWorks() {
     console.log(result5);
     let result6 = await doWork("睡覺", 8000, true);
     console.log(result6);
+  } catch (e) {
+    console.error(e);
+  }
 }
 doAllWorks();
