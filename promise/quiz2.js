@@ -15,11 +15,9 @@ async function asyncF() {
 
   /*
   執行順序: 4 -> 1 -> 5 -> 2 -> 3
-  1. 呼叫並等候 async function asyncF()
-  2. 往下執行 console.log(4)
-  3. 遇到 asyncF()，再呼叫 async
-  4. 先處理 console.log(1)，但因為被 await blocking
-  5. 所以執行 console.log(5)
-  6. 最後處理 await 裡面
-  7. 按照順序處理 console.log(2)後，再處理 console.log(3) 
+  1. 依照執行緒會先執行 (4)
+  2. 依序處理 asyncF() 函式裡面
+  3. 執行 (1) 後，遇到 await，會將此函式內執行工作暫停
+  4. 接續執行 (5)，等到 stack 空了再處理 async() 函式
+  5. 依序執行 (2), (3)
   */
