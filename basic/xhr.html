@@ -62,6 +62,12 @@
               reject(`非同步請求錯誤: ${this.status}`);
             }
           };
+
+          // 如果有拿到 response，就會進入到onerror，onerror也是一個函式
+          xhr.onerror = () => {
+            reject(xhr.statusText);
+          };
+
           // open有三個參數: methed, url, async(default: true 非同步)
           xhr.open("GET", "http://18.237.113.31:3000/", true);
           xhr.send();
