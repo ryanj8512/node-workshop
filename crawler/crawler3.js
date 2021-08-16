@@ -11,7 +11,8 @@ async function doWork() {
       if (err) {
         reject(err);
       } else {
-        resolve(stockCode);
+        // trim 建議加上去，移除前後的空白自原，包括換行
+        resolve(stockCode.trim());
       }
     });
   });
