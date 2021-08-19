@@ -3,6 +3,11 @@ exports = module.exports = {};
 會在第一行先偷放這一段，讓 exports 和 module.exports 都指向一個空的物件
 */
 
+console.log("我是 car1");
+const car2 = require("./car2");
+
+car2.setOwner("Benz");
+
 let brand = "Honda";
 let color = "gray";
 let owner = "";
